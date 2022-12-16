@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, session, url_for, redirect, f
 import bcrypt
 import pymysql.cursors
 
-#for uploading photo:
 from app import app
 from werkzeug.utils import secure_filename
 
