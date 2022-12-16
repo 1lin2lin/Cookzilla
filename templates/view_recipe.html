@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe</title>
+</head>
+<body>
+<h1>Here are the details for {{recipes.title}}</h1>
+    {% if url %}
+        {% for link in url %}
+            <img src={{link.pictureURL}} style="max-width: 200px; height: auto;">
+        {% endfor %}
+    {% endif %}
+    <p>This recipe was posted by {{person.fName}} {{person.lName}}</p>
+    <p>The serving size is {{recipes.numServings}}</p>
+    <p>Tagged by: </p>
+    <ul>
+        {% for tag in tags %}
+            <li>{{tag.tagText}}</li>
+        {% endfor %}
+    </ul>
+    <p>Other recipes related to this:</p>
+     <ul>
+        {% for recipe in related %}
+            <li><a href="{{url_for('viewRecipe', id=recipe.recipe2)}}">{{recipe.recipe2}}</a></li>
+        {% endfor %}
+    </ul>
+<hr>
+<h3>Here are all the ingredients you need:</h3>
+<table>
+    <tr>
+        <th>Ingredient<th>
+        <th>Amount/Unit<th>
+    </tr>
+    {% for ingredient in ingredients %}
+    <tr>
+        <td>{{ingredient.iName}}</td>
+        <td>{{ingredient.amount}}</td>
+        <td>{{ingredient.unitName}}</td>
+    </tr>
+    {% endfor %}
+</table><br>
+<hr>
+<h3>Here are the detailed steps on how to prepare:</h3>
+<ul>
+    {% for step in steps %}
+        <li>Step {{step.stepNo}}: {{step.sDesc}}</li>
+    {% endfor %}
+</ul><br>
+<hr>
+<h3>Here are the reviews for this recipe: (if any)</h3>
+<table>
+    <tr>
+        <th>Reviewed By</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Ratings</th>
+    </tr>
+    {% for review in reviews %}
+        <tr>
+            <td>{{review.fName}} {{review.lName}}</td>
+            <td>{{review.revTitle}}</td>
+            <td>{{review.revDesc}}</td>
+            {% if review.stars == 5 %}
+                <td>⭐⭐⭐⭐⭐️</td>
+            {% elif review.stars == 4 %}
+                <td>⭐⭐⭐⭐️</td>
+            {% elif review.stars == 3 %}
+                <td>⭐⭐⭐️</td>
+            {% elif review.stars == 2 %}
+                <td>⭐⭐️</td>
+            {% else %}
+                <td>⭐</td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+</table><br>
+<h3>Here are some pictures posted by reviewers (if any)</h3>
+    {% if reviewPics %}
+        {% for pic in reviewPics %}
+            <img src={{pic.pictureURL}} style="max-width: 200px; height: auto; "><br>
+            Submitted By {{pic.userName}}<br>
+        {% endfor %}
+    {% endif %}
+<hr>
+<br>
+{% if auth %}
+    <a href="/home">Return Home</a>
+{% else %}
+    <a href="/">Return</a>
+{% endif %}
+</body>
+</html>

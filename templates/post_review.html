@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Review</title>
+</head>
+<body>
+<h2>Which recipe would you like to review?</h2>
+<br>
+<form action="/postReview" method="POST">
+    Choose a recipe to review:
+    <select name="selected_recipe" required>
+        {% for line in user_recipes %}
+        <option value={{line.recipeID}}>{{line.title}}</option>
+        {% endfor %}
+    </select><br><br>
+    <input type="text" name="revTitle" placeholder="Enter a title" required><br><br>
+    <textarea name="revDesc" rows="4" cols="50" placeholder="Enter your review here" required></textarea><br>
+    Choose a rating: <select name="select_star" required>
+        <option value="5">⭐⭐⭐⭐⭐️</option>
+        <option value="4">⭐⭐⭐⭐️</option>
+        <option value="3">⭐⭐⭐️</option>
+        <option value="2">⭐⭐️</option>
+        <option value="1">⭐️</option>
+    </select><br><br>
+    Review picture URLs:<br>
+    <textarea name="urls" rows="4" cols="50" placeholder="Enter each URL separated by a space"></textarea><br>
+    <input type="submit" value="Post Review">
+</form>
+<br>
+<a href="/home">Return home</a>
+</body>
+</html>

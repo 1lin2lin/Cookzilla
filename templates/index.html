@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookzilla</title>
+</head>
+<body>
+    <h1>Welcome to Cookzilla</h1>
+    <h2>Search for recipes:</h2>
+    (Hint: hold down the Ctrl (windows) or Command (Mac) button to select multiple values)
+    <form action="/search" method="POST">
+        <h4>To search by tags: </h4>
+        <Select name="selected_tag" multiple>
+            {% for tag in tags %}
+                <option value={{tag.tagText}}>{{tag.tagText}}</option>
+            {% endfor %}
+        </Select>
+        <h4>To search by ratings:</h4>
+        <select name="selected_rating" multiple>
+            <option value="5">⭐⭐⭐⭐⭐️</option>
+            <option value="4">⭐⭐⭐⭐️</option>
+            <option value="3">⭐⭐⭐️</option>
+            <option value="2">⭐⭐️</option>
+            <option value="1">⭐️</option>
+        </select>
+        <h4>To search by keywords:</h4>
+        <input type="text" name="keyword" placeholder="Separate word by space"><br><br>
+        <input type="submit" value="Search">
+    </form>
+    <br>
+    <a href="/login">Login</a>
+    <br>
+    <a href="/register">Register</a>
+</body>
+</html>

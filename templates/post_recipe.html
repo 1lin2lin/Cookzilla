@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Recipe</title>
+</head>
+<body>
+<h2>Enter new recipe:</h2>
+<div class="container">
+<form action="/saveRecipe" method="POST">
+	Recipe Title: <input type="text" name="title" placeholder="Enter a title" required/><br><br>
+	Serving Size: <input type="number" name="serving" min="1" max="50" required/><br><br>
+	(Optional) Create Tags:<br>
+	<textarea name="tags" rows="2" cols="30" placeholder="Enter each tag here, separated by a space"></textarea><br><br>
+	(Optional) Related recipe: Hold down the Ctrl (windows) or Command (Mac) button to select multiple recipes
+	<br>
+	<select name="related" multiple>
+		{% for line in user_recipes %}
+			<option value={{line.recipeID}}>{{line.title}}</option>
+		{% endfor %}
+	</select><br><br>
+	(Optional) Enter the image url: <input type="text" name="url" /><br><br>
+	<input type="submit" value = "Continue to add ingredients"/>
+</form>
+</div>
+<br>
+<a href="/home">Return home</a>
+</body>
+</html>

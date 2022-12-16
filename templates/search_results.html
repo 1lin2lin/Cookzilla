@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<body>
+<h2>Here are the recipes based on your search:</h2>
+<table>
+    <th>Recipe ID  </th>
+    <th>Recipe Name  </th>
+    {% for recipe in results %}
+        <tr>
+            <td><a href="{{url_for('viewRecipe', id=recipe.recipeID)}}">{{recipe.recipeID}}</a></td>
+            <td>{{recipe.title}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+{% if auth %}
+    <a href="/home">Return Home</a>
+{% else %}
+    <a href="/">Return</a>
+{% endif %}
+</body>
+</html>

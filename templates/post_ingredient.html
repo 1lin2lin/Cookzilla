@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add ingredient</title>
+</head>
+<body>
+<h1>Please add each ingredient for {{title}}</h1>
+<form action="/addIngredient" method="POST">
+    <fieldset>
+		Enter ingredient's name:
+		<input list="ingredient" name="ingredient">
+		<datalist id="ingredient">
+			{% for ingredient in ingredients %}
+				<option value={{ingredient.iName}}>{{ingredient.iName}}</option>
+			{% endfor %}
+		</datalist><br><br>
+		Enter quantity and select unit:
+		<input type="number" name="quantity" min="1" required>
+		<select name="unit">
+		{% for unit in units %}
+			<option value={{unit.unitName}}>{{unit.unitName}}</option>
+		{% endfor %}
+		</select><br>
+    </fieldset>
+	<br>
+	<input type="submit" value="Add this ingredient"/>
+    {% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form><br>
+<form action="/Steps" method="GET">
+	<h3>Done with adding all ingredients?</h3>
+	<button type="submit" value="Done">Click here to add steps</button>
+</form>
+<hr>
+<a href="/home">Return home</a>
+</body>
+</html>
