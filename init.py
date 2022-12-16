@@ -440,12 +440,6 @@ def registerAuth():
 def logout():
     session.pop('username')
     session.pop('firstname')
-    recipeID = session['recipeID']
-    recipeTitle = session['recipeTitle']
-    if (recipeID):
-        session.pop('recipeID')
-    if (recipeTitle):
-        session.pop('recipeTitle')
     return redirect('/')
 
 if __name__ == "__main__":
