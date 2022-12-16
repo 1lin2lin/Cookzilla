@@ -76,10 +76,10 @@ def search():
     else:
         rating_query = "SELECT recipeID FROM Recipe"
 
-    keyword_query = "SELECT recipeID FROM Step WHERE "
+    keyword_query = "SELECT recipeID FROM Recipe WHERE "
     if (keywords):
         for keyword in keywords:
-            keyword_query += "sDesc LIKE '%"+keyword+"%' OR "
+            keyword_query += "title LIKE '%"+keyword+"%' OR "
         size = len(keyword_query)
         keyword_query = keyword_query[:size-4]
     else:
