@@ -32,3 +32,7 @@ Once user is done adding all the steps, user can click on "return home" to retur
 
 #Post a new review: 
 Users can choose from a dropdown list to select the recipe they would like to review. However, users cannot review the recipes posted by themselves, so those recipes will not be among the options in the dropdown list. Reivewer can enter a title, a description of the review, choose a rating, and copy over the review picture URL to be displayed along with the review in the recipe detail page. 
+
+This project fulfills the 4 basic requirements, and 2 extra features: 
+1) User is able to post reviews
+2) More complex searches in terms of mix and match search inputs such as tag and/or rating and/or single/multiple keywords.
