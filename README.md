@@ -35,4 +35,4 @@ Users can choose from a dropdown list to select the recipe they would like to re
 
 This project fulfills the 4 basic requirements, and 2 extra features: 
 1) User is able to post reviews
-2) More complex searches in terms of mix and match search inputs such as tag and/or rating and/or single/multiple keywords.
+2) More complex searches in terms of mix and match different search inputs such as tags(single tag or multiple), ratings (single rating or multiple), and keywords (single keyword or multiple keywords).
